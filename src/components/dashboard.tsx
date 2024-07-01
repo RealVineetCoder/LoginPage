@@ -8,6 +8,7 @@ import { RiFileHistoryLine } from "react-icons/ri";
 import { RiTeamLine } from "react-icons/ri";
 import { CiMenuFries } from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
+import { MdClose } from "react-icons/md";
 import Link from "next/link";
 
 export default function Sidebar() {
@@ -21,8 +22,10 @@ export default function Sidebar() {
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } bg-[#0C0B10] transition-transform duration-300 lg:translate-x-0 lg:static lg:inset-auto lg:w-64 p-4`}
         >
-          <div className="text-lg font-bold mb-4 text-[#7D7D81]">
+          <div className="text-lg font-bold mb-4 text-[#7D7D81] flex items-center justify-between">
             Techsolace
+            <MdClose className={`text-2xl ${isSidebarOpen ? "visible" : "invisible"}`} onClick={() => setIsSidebarOpen(false)}/>
+
           </div>
           <nav>
             <ul>
@@ -127,7 +130,7 @@ export default function Sidebar() {
         <div className="flex justify-between items-center p-5">
           <h1>Main Content</h1>
           <button
-            className="text-2xl hover:text-[#486BE3] lg:hidden"
+            className={`text-2xl hover:text-[#486BE3] lg:hidden ${isSidebarOpen ? "invisible" : "visible"}`}
             onClick={() => setIsSidebarOpen(true)}
           >
             <CiMenuFries />
